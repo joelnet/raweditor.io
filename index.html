@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open Raw Edit · develop RAW photos in your browser</title>
+    <meta
+      name="description"
+      content="Develop RAW photos on your phone, tablet, or laptop. No install, no account, no ads. Free and open source."
+    />
+    <meta name="theme-color" content="#10141f" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <nav class="nav">
+      <a class="nav__brand" href="#top">
+        <span class="nav__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <circle cx="12" cy="12" r="4.2" fill="currentColor" />
+            <circle cx="12" cy="12" r="1.4" fill="var(--ink)" />
+          </svg>
+        </span>
+        <span class="nav__name">Open<span class="nav__name-em"> Raw Edit</span></span>
+        <span class="nav__tag">v0.9</span>
+      </a>
+      <div class="nav__links">
+        <a href="#what">What</a>
+        <a href="#why">Why</a>
+        <a href="#specs">Specs</a>
+        <a class="nav__cta" href="#open">Launch →</a>
+      </div>
+    </nav>
+
+    <main id="top">
+      <!-- ─── HERO ───────────────────────────────────────────────────────── -->
+      <section class="hero">
+        <div class="hero__left">
+          <p class="eyebrow">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            open source · no install · no account · no ads
+          </p>
+          <h1 class="hero__title">
+            Develop a RAW,
+            <span class="hero__title-em">in your browser.</span>
+          </h1>
+          <p class="hero__lede">
+            Drop a <code>RAW</code> file into the app on your phone, tablet, or laptop.
+            Push the edits. Save a PNG, JPG, or 16-bit TIFF. Every byte stays on your
+            device.
+          </p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary" href="#open">
+              <span>Open the app</span>
+              <span class="btn__glyph" aria-hidden="true">→</span>
+            </a>
+            <a class="btn btn--ghost" href="https://github.com/" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.03c-3.2.7-3.87-1.36-3.87-1.36-.52-1.32-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.35.78 1.04.78 2.1v3.11c0 .3.21.66.8.55 4.56-1.52 7.85-5.83 7.85-10.91C23.5 5.65 18.35.5 12 .5z"
+                />
+              </svg>
+              <span>Source on GitHub</span>
+            </a>
+          </div>
+          <p class="hero__fineprint">
+            MIT licensed · no ads · works on phone, tablet, desktop
+          </p>
+        </div>
+
+        <!-- A recreation of the editor itself, doubling as the hero visual.
+             The before/after wipe is driven by JS; everything else is static CSS. -->
+        <figure class="viewer" aria-label="Editor preview">
+          <div class="viewer__chrome">
+            <div class="viewer__dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="viewer__path">~/photos/2026-06-13/DSC04217.ARW</span>
+            <span class="viewer__exif">ƒ/2.8 · 1/640s · ISO&nbsp;200 · 35mm</span>
+          </div>
+
+          <div class="viewer__stage">
+            <!-- Histogram strip (static SVG) -->
+            <div class="histo" aria-hidden="true">
+              <svg viewBox="0 0 200 40" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="hg" x1="0" x2="1">
+                    <stop offset="0" stop-color="#ff7575" stop-opacity=".75" />
+                    <stop offset=".5" stop-color="#9ef36b" stop-opacity=".6" />
+                    <stop offset="1" stop-color="#5fb2ff" stop-opacity=".8" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M0,40 L0,32 L8,28 L14,18 L20,12 L28,8 L36,10 L44,18 L52,24 L60,20 L68,14 L78,16 L86,22 L96,18 L106,10 L116,6 L126,8 L138,14 L148,20 L158,24 L168,26 L178,22 L188,28 L196,34 L200,40 Z"
+                  fill="url(#hg)"
+                />
+              </svg>
+            </div>
+
+            <!-- The photograph, with a before/after wipe -->
+            <div class="canvas" id="canvas">
+              <div class="canvas__before" aria-hidden="true">
+                <div class="canvas__photo canvas__photo--flat"></div>
+              </div>
+              <div class="canvas__after" id="afterClip">
+                <div class="canvas__photo canvas__photo--graded"></div>
+              </div>
+              <button
+                class="canvas__handle"
+                id="handle"
+                type="button"
+                aria-label="Drag to compare before and after"
+              >
+                <span class="canvas__handle-rail"></span>
+                <span class="canvas__handle-knob">
+                  <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                    <path
+                      d="M9 6l-5 6 5 6M15 6l5 6-5 6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <span class="canvas__tag canvas__tag--left">before</span>
+              <span class="canvas__tag canvas__tag--right">after</span>
+            </div>
+
+            <!-- Sliders panel -->
+            <aside class="panel" aria-label="Sample slider panel">
+              <div class="panel__section">
+                <header class="panel__head">
+                  <span>White balance</span>
+                  <span class="panel__eye" aria-hidden="true">◉</span>
+                </header>
+                <div class="slider" style="--v: 62%">
+                  <span class="slider__label">temp</span>
+                  <span class="slider__track"><span class="slider__knob"></span></span>
+                  <span class="slider__value">+540</span>
+                </div>
+                <div class="slider" style="--v: 48%">
+                  <span class="slider__label">tint</span>
+                  <span class="slider__track"><span class="slider__knob"></span></span>
+                  <span class="slider__value">−4</span>
+                </div>
+              </div>
+              <div class="panel__section">
+                <header class="panel__head">
+                  <span>Tone</span>
+                  <span class="panel__eye" aria-hidden="true">◉</span>
+                </header>
+                <div class="slider" style="--v: 58%">
+                  <span class="slider__label">exposure</span>
+                  <span class="slider__track"><span class="slider__knob"></span></span>
+                  <span class="slider__value">+0.35</span>
+                </div>
+                <div class="slider" style="--v: 70%">
+                  <span class="slider__label">contrast</span>
+                  <span class="slider__track"><span class="slider__knob"></span></span>
+                  <span class="slider__value">+18</span>
+                </div>
+                <div class="slider" style="--v: 28%">
+                  <span class="slider__label">highlights</span>
+                  <span class="slider__track"><span class="slider__knob"></span></span>
+                  <span class="slider__value">−42</span>
+                </div>
+                <div class="slider" style="--v: 72%">
+                  <span class="slider__label">shadows</span>
+                  <span class="slider__track"><span class="slider__knob"></span></span>
+                  <span class="slider__value">+28</span>
+                </div>
+              </div>
+              <div class="panel__section">
+                <header class="panel__head">
+                  <span>Color</span>
+                  <span class="panel__eye" aria-hidden="true">◉</span>
+                </header>
+                <div class="slider" style="--v: 64%">
+                  <span class="slider__label">vibrance</span>
+                  <span class="slider__track"><span class="slider__knob"></span></span>
+                  <span class="slider__value">+22</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </figure>
+      </section>
+
+      <!-- ─── CREED ──────────────────────────────────────────────────────── -->
+      <section class="creed">
+        <ol class="creed__list">
+          <li class="creed__item">
+            <span class="creed__num">01</span>
+            <h2 class="creed__word">Local.</h2>
+            <p class="creed__copy">
+              Your RAW files are decoded, edited, and exported on your device, never
+              uploaded.
+            </p>
+          </li>
+          <li class="creed__item">
+            <span class="creed__num">02</span>
+            <h2 class="creed__word">Fast.</h2>
+            <p class="creed__copy">
+              GPU accelerated previews. Every edit lands at your monitor's refresh
+              rate, locally. No spinner, no progress bar, no waiting on a server.
+            </p>
+          </li>
+          <li class="creed__item">
+            <span class="creed__num">03</span>
+            <h2 class="creed__word">Free.</h2>
+            <p class="creed__copy">
+              MIT-licensed source on GitHub. No account, no trial, no ads, no
+              subscription, no "Pro" tier you'll be nagged about next month.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ─── WHAT IT DOES ───────────────────────────────────────────────── -->
+      <section id="what" class="what">
+        <header class="section-head">
+          <span class="section-head__tag">01 / what it does</span>
+          <h2 class="section-head__title">
+            Six panels.
+            <em>One photograph at a time.</em>
+          </h2>
+          <p class="section-head__lede">
+            The app is deliberately small. Global tone, global color, crop. The things
+            you actually reach for when you're developing a single frame, and nothing else
+            to wade through.
+          </p>
+        </header>
+
+        <div class="what__grid">
+          <article class="feature">
+            <span class="feature__num">·01</span>
+            <h3 class="feature__title">White&nbsp;balance</h3>
+            <p>
+              Temp and tint sliders calibrated against the camera profile, with an
+              <em>auto</em> button that runs gray-world plus a near-gray refinement pass.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="feature__num">·02</span>
+            <h3 class="feature__title">Tone</h3>
+            <p>
+              Exposure, contrast, highlights, shadows, whites, blacks. Auto detects
+              clipping at both ends and lifts shadows without crushing midtones.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="feature__num">·03</span>
+            <h3 class="feature__title">Color</h3>
+            <p>
+              Vibrance is inverse-saturation weighted in the Velvia style; saturation is a
+              clean chroma scale around Rec.709 luma. No magenta skin.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="feature__num">·04</span>
+            <h3 class="feature__title">Crop &amp; rotate</h3>
+            <p>
+              Aspect presets, free ratio, orientation flip, pinch zoom and pan. Your last
+              custom ratio is remembered across sessions.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="feature__num">·05</span>
+            <h3 class="feature__title">Histogram</h3>
+            <p>
+              RGB histogram computed on the GPU in the same shader that draws the preview,
+              so it's always exactly what you're looking at.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="feature__num">·06</span>
+            <h3 class="feature__title">Export</h3>
+            <p>
+              Full-resolution PNG, JPG, or 16-bit uncompressed TIFF. The export math
+              is the <em>same</em> math as the preview, so what you see is what you
+              save.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ─── WHY IT EXISTS ──────────────────────────────────────────────── -->
+      <section id="why" class="why">
+        <header class="section-head">
+          <span class="section-head__tag">02 / why it exists</span>
+          <h2 class="section-head__title">
+            Because you shouldn't have to
+            <em>get home to edit.</em>
+          </h2>
+        </header>
+
+        <div class="why__columns">
+          <div class="why__col">
+            <p class="why__lede">
+              The best moment to edit a photo is usually right after you take it, while
+              the scene is still in your head and the version you imagined is still
+              vivid. That moment rarely happens at a desk. Open Raw Edit goes where the
+              photograph already is: on your phone, on a tablet, on whatever screen is
+              nearby.
+            </p>
+            <p>
+              Open the app. Drop the file. Push the edits. Save the result. Close the
+              tab and walk away. The next time you come back, it's still a URL, on
+              whatever device you happen to have in front of you.
+            </p>
+          </div>
+
+          <aside class="nope" aria-label="What you don't get with Open Raw Edit">
+            <ul class="nope__list">
+              <li><span class="nope__no">No</span><span class="nope__what">install</span></li>
+              <li><span class="nope__no">No</span><span class="nope__what">account</span></li>
+              <li><span class="nope__no">No</span><span class="nope__what">ads</span></li>
+              <li><span class="nope__no">No</span><span class="nope__what">subscription</span></li>
+              <li><span class="nope__no">No</span><span class="nope__what">tracking</span></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ─── TECHNICAL ──────────────────────────────────────────────────── -->
+      <section id="specs" class="specs">
+        <header class="section-head">
+          <span class="section-head__tag">03 / under the hood</span>
+          <h2 class="section-head__title">
+            Built for people who
+            <em>read the EXIF.</em>
+          </h2>
+        </header>
+
+        <dl class="specs__list">
+          <div class="specs__row">
+            <dt>Where it runs</dt>
+            <dd>
+              On your phone, on your tablet, on your laptop. Any modern browser on iOS,
+              Android, ChromeOS, macOS, Windows, or Linux. The same page, the same
+              pipeline, the same pixels.
+            </dd>
+          </div>
+          <div class="specs__row">
+            <dt>What stays local</dt>
+            <dd>
+              Everything. Your sensor file is unpacked into a 16-bit linear image
+              entirely on your device. Nothing is uploaded, nothing is mirrored.
+            </dd>
+          </div>
+          <div class="specs__row">
+            <dt>Export</dt>
+            <dd>
+              Full-resolution PNG, JPG, or 16-bit uncompressed TIFF, rendered locally
+              at the original sensor resolution.
+            </dd>
+          </div>
+          <div class="specs__row">
+            <dt>Formats</dt>
+            <dd class="mono">
+              .ARW · .RAF · .DNG · .CR2 · .NEF · .ORF · .RW2 · .PEF · .SRW
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- ─── HONEST LIMITS ──────────────────────────────────────────────── -->
+      <section class="limits">
+        <h2 class="limits__title">
+          What it <em>isn't</em>.
+        </h2>
+        <p>
+          Not a digital asset manager. There is no catalog, no library, no rating system,
+          no batch processing, no AI sky replacement, no presets marketplace.
+        </p>
+        <p>
+          This is for the moment between the shot and the share. Triage on the way home,
+          finish on the couch, save the final on the desk. One photo at a time.
+        </p>
+      </section>
+
+      <!-- ─── CTA ────────────────────────────────────────────────────────── -->
+      <section id="open" class="open">
+        <p class="open__eyebrow">no install · no account · no ads</p>
+        <h2 class="open__title">
+          Open a RAW file<br />
+          <em>right now.</em>
+        </h2>
+        <a class="open__cta" href="https://openrawedit.app/" target="_blank" rel="noreferrer">
+          <span>Launch Open Raw Edit</span>
+          <span class="open__arrow" aria-hidden="true">↗</span>
+        </a>
+        <p class="open__hint">
+          Or drop a file straight onto the app, it'll start developing while it loads.
+        </p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot__row">
+        <span class="foot__brand">Open Raw Edit</span>
+        <span class="foot__by">
+          a darkroom in your browser · <span class="mono">MIT</span> · no ads ·
+          phone, tablet, desktop
+        </span>
+      </div>
+      <div class="foot__row foot__row--lines">
+        <a href="https://github.com/">github</a>
+        <a href="#open">launch</a>
+        <a href="#specs">specs</a>
+        <a href="mailto:hello@openrawedit.app">contact</a>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-13T23:55:00Z",
+  "title": "Design System: Open Raw Edit",
+  "extensions": {
+    "colorMeta": {
+      "bg-deep": {
+        "role": "neutral",
+        "displayName": "Deep Navy",
+        "canonical": "oklch(15% 0.04 260)",
+        "tonalRamp": ["#0a0c14", "#10141f", "#141927", "#1b2133", "#262e47", "#3a4366", "#5a6378", "#7e879e"]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Navy",
+        "canonical": "oklch(17% 0.04 260)",
+        "tonalRamp": ["#0a0c14", "#10141f", "#141927", "#1b2133", "#262e47", "#3a4366", "#5a6378", "#7e879e"]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel",
+        "canonical": "oklch(21% 0.04 260)",
+        "tonalRamp": ["#10141f", "#141927", "#1b2133", "#262e47", "#3a4366", "#5a6378", "#7e879e", "#b9c0d1"]
+      },
+      "panel-edge": {
+        "role": "neutral",
+        "displayName": "Panel Edge",
+        "canonical": "oklch(26% 0.04 260)",
+        "tonalRamp": ["#141927", "#1b2133", "#262e47", "#3a4366", "#5a6378", "#7e879e", "#b9c0d1", "#d7dce8"]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Cool Cream",
+        "canonical": "oklch(88% 0.02 260)",
+        "tonalRamp": ["#5a6378", "#7e879e", "#9aa3b8", "#b9c0d1", "#d7dce8", "#e5e9f0", "#eef0f5", "#f7f8fb"]
+      },
+      "text-2": {
+        "role": "neutral",
+        "displayName": "Cool Cream 2",
+        "canonical": "oklch(80% 0.02 260)",
+        "tonalRamp": ["#5a6378", "#7e879e", "#9aa3b8", "#b9c0d1", "#d7dce8", "#e5e9f0", "#eef0f5", "#f7f8fb"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Steel",
+        "canonical": "oklch(60% 0.025 260)",
+        "tonalRamp": ["#3a4366", "#5a6378", "#7e879e", "#9aa3b8", "#b9c0d1", "#d7dce8", "#e5e9f0", "#f7f8fb"]
+      },
+      "text-mute": {
+        "role": "neutral",
+        "displayName": "Muted Steel Deep",
+        "canonical": "oklch(46% 0.025 260)",
+        "tonalRamp": ["#262e47", "#3a4366", "#5a6378", "#7e879e", "#9aa3b8", "#b9c0d1", "#d7dce8", "#eef0f5"]
+      },
+      "accent-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "oklch(76% 0.13 240)",
+        "tonalRamp": ["#0c2540", "#143a66", "#1d508c", "#2666b3", "#3f86d6", "#5fb2ff", "#8ec5ff", "#bdd9ff"]
+      },
+      "accent-blue-warm": {
+        "role": "primary",
+        "displayName": "Signal Blue Warm",
+        "canonical": "oklch(82% 0.10 240)",
+        "tonalRamp": ["#0c2540", "#143a66", "#1d508c", "#2666b3", "#3f86d6", "#5fb2ff", "#8ec5ff", "#bdd9ff"]
+      },
+      "accent-yellow": {
+        "role": "tertiary",
+        "displayName": "Channel Yellow (histogram + chrome dot only)",
+        "canonical": "oklch(85% 0.13 95)",
+        "tonalRamp": ["#3a2e0e", "#5b481a", "#7d6125", "#9e7c30", "#bf953c", "#e8c750", "#efd478", "#f4e3a3"]
+      },
+      "accent-green": {
+        "role": "tertiary",
+        "displayName": "Channel Green (histogram + chrome dot only)",
+        "canonical": "oklch(89% 0.20 140)",
+        "tonalRamp": ["#1b3d11", "#2a591c", "#3a7826", "#4c9831", "#74c14a", "#9ef36b", "#bbf68d", "#d4f8b1"]
+      },
+      "accent-red": {
+        "role": "tertiary",
+        "displayName": "Channel Red (histogram + chrome dot only)",
+        "canonical": "oklch(72% 0.18 25)",
+        "tonalRamp": ["#3a1212", "#5b1d1d", "#7d2828", "#a13434", "#cf4f4f", "#ff7575", "#ff9494", "#ffb3b3"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline; one moment per page. Mix upright + italic in a single phrase." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles. Italic emphasis on the operative clause." },
+      "title": { "displayName": "Title", "purpose": "Feature card titles and panel section names." },
+      "body": { "displayName": "Body", "purpose": "Default prose. Max line length 56-65ch." },
+      "lede": { "displayName": "Lede", "purpose": "The single paragraph that follows a Display or Headline." },
+      "label": { "displayName": "Label", "purpose": "Mono uppercase micro-typography: eyebrows, nav, panel heads, footer." },
+      "mono": { "displayName": "Mono", "purpose": "Inline technical content: paths, EXIF, slider readouts, format lists." }
+    },
+    "shadows": [
+      {
+        "name": "viewer-card",
+        "value": "0 1px 0 rgba(255,255,255,0.04) inset, 0 40px 120px -30px rgba(0,0,0,0.8), 0 0 0 1px rgba(95,178,255,0.04)",
+        "purpose": "The hero viewer's only elevation. Inset highlight + long-throw ambient + faint Signal Blue ring."
+      },
+      {
+        "name": "signal-glow",
+        "value": "0 1px 0 rgba(255,255,255,0.22) inset, 0 20px 60px -20px rgba(95,178,255,0.55), 0 0 0 10px rgba(95,178,255,0.08)",
+        "purpose": "Final-CTA launch button. The 10px feathered ring is the signature."
+      },
+      {
+        "name": "btn-primary-throw",
+        "value": "0 1px 0 rgba(255,255,255,0.18) inset, 0 12px 30px -10px rgba(95,178,255,0.5)",
+        "purpose": "Shorter version of Signal Glow for the smaller primary button."
+      }
+    ],
+    "motion": [
+      { "name": "ease-quint", "value": "cubic-bezier(0.22, 0.61, 0.36, 1)", "purpose": "Default ease-out for all transitions." },
+      { "name": "dur-fast", "value": "200ms", "purpose": "Hover state changes (color, border)." },
+      { "name": "dur-base", "value": "250ms", "purpose": "Button lift and CTA arrow nudge." },
+      { "name": "dur-slow", "value": "400ms", "purpose": "Viewer perspective reset on hover." },
+      { "name": "pulse", "value": "2.4s ease-in-out infinite", "purpose": "Eyebrow indicator dot: opacity 1 → 0.35 → 1." }
+    ],
+    "breakpoints": [
+      { "name": "phone", "value": "560px" },
+      { "name": "tablet", "value": "880px" },
+      { "name": "desktop", "value": "1000px" },
+      { "name": "wide", "value": "1400px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The hero's lead CTA: Signal Blue fill, Deep Navy text, short throw shadow.",
+      "html": "<button class=\"ds-btn-primary\"><span>Open the editor</span><span class=\"ds-btn-primary__glyph\" aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; background: #5fb2ff; color: #10141f; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; border: none; cursor: pointer; box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 12px 30px -10px rgba(95,178,255,0.5); transition: transform 250ms cubic-bezier(0.22, 0.61, 0.36, 1), background 250ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-btn-primary:hover { background: #8ec5ff; transform: translateY(-1px); } .ds-btn-primary:hover .ds-btn-primary__glyph { transform: translateX(3px); } .ds-btn-primary__glyph { transition: transform 250ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-btn-primary:focus-visible { outline: 2px solid #5fb2ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary CTA: transparent with a hairline border that deepens on hover.",
+      "html": "<button class=\"ds-btn-ghost\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.03c-3.2.7-3.87-1.36-3.87-1.36-.52-1.32-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.35.78 1.04.78 2.1v3.11c0 .3.21.66.8.55 4.56-1.52 7.85-5.83 7.85-10.91C23.5 5.65 18.35.5 12 .5z\"/></svg><span>Source on GitHub</span></button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; background: transparent; color: #d7dce8; border: 1px solid rgba(215,220,232,0.18); font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: border-color 250ms cubic-bezier(0.22, 0.61, 0.36, 1), background 250ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 250ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-btn-ghost:hover { border-color: #7e879e; background: rgba(215,220,232,0.04); transform: translateY(-1px); } .ds-btn-ghost:focus-visible { outline: 2px solid #5fb2ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Launch CTA",
+      "kind": "button",
+      "refersTo": "button-launch",
+      "description": "Bottom-of-page launch button: the single biggest CTA, lit by the Signal Glow.",
+      "html": "<a class=\"ds-cta-launch\" href=\"#\"><span>Launch Open Raw Edit</span><span class=\"ds-cta-launch__arrow\" aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-cta-launch { display: inline-flex; align-items: center; gap: 16px; padding: 22px 40px; border-radius: 999px; background: #5fb2ff; color: #10141f; font-family: 'DM Sans', system-ui, sans-serif; font-size: 18px; font-weight: 500; letter-spacing: 0.01em; text-decoration: none; box-shadow: 0 1px 0 rgba(255,255,255,0.22) inset, 0 20px 60px -20px rgba(95,178,255,0.55), 0 0 0 10px rgba(95,178,255,0.08); transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-cta-launch:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(255,255,255,0.28) inset, 0 30px 80px -20px rgba(95,178,255,0.65), 0 0 0 12px rgba(95,178,255,0.12); } .ds-cta-launch:hover .ds-cta-launch__arrow { transform: translate(2px, -2px); } .ds-cta-launch__arrow { font-size: 22px; transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-cta-launch:focus-visible { outline: 2px solid #d7dce8; outline-offset: 4px; }"
+    },
+    {
+      "name": "Nav CTA",
+      "kind": "button",
+      "refersTo": "nav-cta",
+      "description": "Outlined Signal Blue pill in the top nav, the only button up there.",
+      "html": "<a class=\"ds-nav-cta\" href=\"#\">Launch →</a>",
+      "css": ".ds-nav-cta { display: inline-flex; align-items: center; padding: 8px 14px; border-radius: 999px; background: transparent; color: #5fb2ff; border: 1px solid #5fb2ff; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; transition: background 200ms cubic-bezier(0.22, 0.61, 0.36, 1), color 200ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-nav-cta:hover { background: #5fb2ff; color: #10141f; } .ds-nav-cta:focus-visible { outline: 2px solid #5fb2ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Slider Panel Row",
+      "kind": "custom",
+      "refersTo": "panel-row",
+      "description": "The editor's slider row: mono label, soft-blue-to-Signal-Blue filled track, mono signed value. The system's signature micro-component.",
+      "html": "<div class=\"ds-slider\" style=\"--v: 58%\"><span class=\"ds-slider__label\">exposure</span><span class=\"ds-slider__track\"><span class=\"ds-slider__knob\"></span></span><span class=\"ds-slider__value\">+0.35</span></div>",
+      "css": ".ds-slider { display: grid; grid-template-columns: 60px 1fr 44px; align-items: center; gap: 8px; font-family: 'JetBrains Mono', ui-monospace, monospace; color: #b9c0d1; padding: 8px 12px; background: #1b2133; border-radius: 6px; } .ds-slider__label { color: #7e879e; font-size: 10px; } .ds-slider__track { position: relative; height: 2px; background: rgba(215,220,232,0.18); border-radius: 2px; } .ds-slider__track::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: var(--v); background: linear-gradient(90deg, rgba(95,178,255,0.45), #5fb2ff); border-radius: 2px; } .ds-slider__knob { position: absolute; top: 50%; left: var(--v); width: 10px; height: 10px; border-radius: 50%; background: #d7dce8; transform: translate(-50%, -50%); box-shadow: 0 0 0 3px rgba(0,0,0,0.3), 0 0 6px rgba(95,178,255,0.45); } .ds-slider__value { font-size: 10px; text-align: right; color: #d7dce8; }"
+    },
+    {
+      "name": "Feature Card",
+      "kind": "card",
+      "refersTo": "card-feature",
+      "description": "The six-panel grid cell, flat at rest, Navy on hover, with a mono section number and warm-italic emphasis word inside the body.",
+      "html": "<article class=\"ds-feature\"><span class=\"ds-feature__num\">·02</span><h3 class=\"ds-feature__title\">Tone</h3><p>Exposure, contrast, highlights, shadows, whites, blacks. <em>Auto</em> detects clipping at both ends and lifts shadows without crushing midtones.</p></article>",
+      "css": ".ds-feature { background: #10141f; padding: 36px 30px 40px; border: 1px solid rgba(215,220,232,0.08); border-radius: 14px; transition: background 300ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-feature:hover { background: #141927; } .ds-feature__num { display: block; margin-bottom: 22px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: #5a6378; letter-spacing: 0.1em; } .ds-feature__title { margin: 0 0 12px; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px; letter-spacing: -0.01em; color: #d7dce8; } .ds-feature p { margin: 0; font-family: 'DM Sans', system-ui, sans-serif; color: #b9c0d1; line-height: 1.6; font-size: 15px; } .ds-feature em { font-style: italic; color: #e8c750; font-family: 'Instrument Serif', Georgia, serif; font-size: 1.02em; }"
+    },
+    {
+      "name": "Section Eyebrow + Headline",
+      "kind": "custom",
+      "refersTo": "section-head",
+      "description": "The canonical section opener, Signal Blue mono eyebrow above an Instrument Serif headline with italic-Signal-Blue emphasis on the operative clause.",
+      "html": "<header class=\"ds-section-head\"><span class=\"ds-section-head__tag\">02 / why it exists</span><h2 class=\"ds-section-head__title\">Because the photo editor <em>shouldn't outlive the photo.</em></h2></header>",
+      "css": ".ds-section-head { max-width: 1400px; margin: 0 auto; padding-bottom: 56px; } .ds-section-head__tag { display: block; margin-bottom: 18px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #5fb2ff; } .ds-section-head__title { margin: 0 0 18px; max-width: 18ch; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.6vw, 68px); line-height: 1.02; letter-spacing: -0.022em; color: #d7dce8; } .ds-section-head__title em { font-style: italic; color: #5fb2ff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Blue Hour",
+    "overview": "The site borrows its palette from the editor itself: a cool deep navy canvas, panels stepped one tone above, cream-cool text, and a single photographic blue (#5fb2ff) carrying every action. 'Blue hour' is the photographer's term for the twilight window between sunset and dark when everything turns deeply cool and quietly luminous. The site lives in that window. Quiet. Considered. Faintly lit from within. The visual system pairs italic Instrument Serif for the moments that deserve voice with a precise DM Sans for prose and JetBrains Mono for the technical chassis. Numbers and units are treated as first-class typographic citizens. The page reads like a long-read in a photography quarterly that happens to contain working software. It explicitly rejects: the Vercel-clone landing, Adobe Creative Cloud product pages, and any aesthetic that suggests 'Built different. AI-native. Ship in seconds.'",
+    "keyCharacteristics": [
+      "Cool navy canvas with cool-cream type; never #000, never #fff.",
+      "A single photographic blue (#5fb2ff) carries every accent and CTA, borrowed exactly from the editor app.",
+      "Italic Instrument Serif for editorial moments; DM Sans body; JetBrains Mono for technical chassis. No system font, ever.",
+      "Flat surfaces with tonal layering (bg-deep → bg → panel → panel-edge), elevated only on the editor card and the launch CTA glow.",
+      "The hero IS the product: the editor's chrome, histogram, sliders, and before/after wipe recreated in HTML/CSS as marketing.",
+      "The site's colors are the app's colors, exactly. Visiting the site feels like opening the app with the photo off-screen."
+    ],
+    "rules": [
+      { "name": "The Signal Scarcity Rule", "body": "Signal Blue must occupy ≤8% of any viewport at rest. If a layout starts to feel 'blue', the accent is working too hard.", "section": "colors" },
+      { "name": "The No True Black, No True White Rule", "body": "#000 and #fff are prohibited. Every neutral is tinted toward the cool navy hue.", "section": "colors" },
+      { "name": "The Channel Containment Rule", "body": "Channel Red, Green, and Yellow live inside the histogram strip and the viewer chrome dots and nowhere else.", "section": "colors" },
+      { "name": "The Editor Mirror Rule", "body": "Every neutral and accent value on this site maps 1:1 to a custom property in raw-editor/src/styles.css. If the editor's palette shifts, the site shifts with it.", "section": "colors" },
+      { "name": "The Italic Carries the Voice Rule", "body": "Emphasis is conveyed by italicizing Instrument Serif and coloring it Signal Blue. Never bold body text.", "section": "typography" },
+      { "name": "The Mono Reserves the Technical Rule", "body": "JetBrains Mono is exclusively for technical content. Prose never appears in mono; mono never appears in prose.", "section": "typography" },
+      { "name": "The Numbers Are Typography Rule", "body": "Numerals get their own column in panel rows, are right-aligned, and are always set in JetBrains Mono with leading + / − for signed values.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. Only the hero viewer and the primary launch CTA lift.", "section": "elevation" },
+      { "name": "The Glow Belongs to the CTA Rule", "body": "Any element that emits a colored glow is an action surface the user is meant to click. Decorative glow is prohibited.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Signal Blue (#5fb2ff) for every CTA, italic emphasis, section eyebrow, and accent, and nothing else.",
+      "Do keep Signal Blue under ≈8% of any viewport at rest (the Signal Scarcity Rule).",
+      "Do italicize Instrument Serif and color it Signal Blue for emphasis; never bold body text.",
+      "Do treat numerals as typography, right-align, set in JetBrains Mono, leading + / − for signed values.",
+      "Do lift only two surfaces (hero viewer, launch CTA). Everything else is flat with tonal layering.",
+      "Do keep mono micro-labels at 0.12-0.18em letter-spacing in UPPERCASE, that's the system's micro-typographic signature.",
+      "Do mirror the editor app's palette exactly. The colors here are the colors there, by design.",
+      "Do respect prefers-reduced-motion on every animation, especially the hero's auto-sweep."
+    ],
+    "donts": [
+      "Don't use #000 or #fff. Ever. Both are forbidden.",
+      "Don't use a gradient on text (background-clip: text). Solid color + italic carries every emphatic moment.",
+      "Don't use border-left greater than 1px as a colored accent stripe.",
+      "Don't add glassmorphism beyond the single nav backdrop-filter.",
+      "Don't add another accent color. The three channel hues (red/green/yellow) are confined to the histogram and the viewer chrome dots.",
+      "Don't mimic the Vercel / Linear clone aesthetic (Inter or Geist body, soft purple-to-pink mesh, glass screenshot card).",
+      "Don't mimic Adobe Creative Cloud's slick stock-photo product pages or the 'Tell your story' tonality.",
+      "Don't ship hero-metric templates (big number + small label + supporting stats + gradient accent).",
+      "Don't wrap the page in a single max-width container. Use --max: 1400px per section.",
+      "Don't use modals, popups, newsletter prompts, cookie banners, or any interstitial.",
+      "Don't drift the palette away from the editor app's. The site is a marketing surface for the app and reads as a continuation of it."
+    ]
+  }
+}
