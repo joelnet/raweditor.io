@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      :root {
+        --bg-deep: #10141f;
+        --bg: #141927;
+        --panel: #1b2133;
+        --text: #d7dce8;
+        --text-2: #b9c0d1;
+        --muted: #7e879e;
+        --text-mute: #5a6378;
+        --rule: rgba(215, 220, 232, 0.08);
+        --rule-strong: rgba(215, 220, 232, 0.18);
+        --accent-blue: #5fb2ff;
+        --accent-blue-2: #8ec5ff;
+        --accent-yellow: #e8c750;
+        --accent-green: #9ef36b;
+        --accent-red: #ff7575;
+        --serif: "Instrument Serif", "Times New Roman", serif;
+        --sans: "DM Sans", system-ui, sans-serif;
+        --mono: "JetBrains Mono", ui-monospace, monospace;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        width: 1200px;
+        height: 630px;
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        color: var(--text);
+      }
+
+      .card {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background:
+          radial-gradient(ellipse 80% 60% at 100% -8%, rgba(95, 178, 255, 0.20), transparent 60%),
+          radial-gradient(ellipse 70% 50% at -6% 8%, rgba(95, 178, 255, 0.06), transparent 60%),
+          radial-gradient(ellipse 60% 80% at 62% 130%, rgba(95, 178, 255, 0.10), transparent 65%),
+          var(--bg-deep);
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding: 64px 60px;
+      }
+
+      /* fine grain overlay */
+      .grain {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.4;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      }
+
+      /* faint horizontal scanlines bottom-right for depth */
+      .scan {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background-image: repeating-linear-gradient(
+          180deg,
+          transparent 0, transparent 71px,
+          rgba(215, 220, 232, 0.035) 71px, rgba(215, 220, 232, 0.035) 72px
+        );
+        mask-image: radial-gradient(ellipse 70% 70% at 80% 60%, black, transparent 75%);
+      }
+
+      /* ─── LEFT: brand + headline ─────────────────────────── */
+      .left {
+        position: relative;
+        z-index: 5;
+        width: 466px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 11px;
+        margin-bottom: 30px;
+      }
+      .brand__mark { color: var(--accent-blue); align-self: center; transform: translateY(1px); filter: drop-shadow(0 0 10px rgba(95,178,255,0.45)); }
+      .brand__name {
+        font-family: var(--mono);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        font-size: 21px;
+        color: var(--text);
+      }
+      .brand__name em {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--accent-blue);
+        font-size: 26px;
+        margin-left: 3px;
+      }
+      .brand__tag {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--muted);
+        letter-spacing: 0.04em;
+        margin-left: 2px;
+      }
+
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+      }
+      .eyebrow__dot {
+        width: 7px; height: 7px; border-radius: 50%;
+        background: var(--accent-blue);
+        box-shadow: 0 0 14px rgba(95, 178, 255, 0.85);
+        flex-shrink: 0;
+      }
+
+      h1 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: 78px;
+        line-height: 0.9;
+        letter-spacing: -0.028em;
+        color: var(--text);
+        margin-bottom: 26px;
+      }
+      h1 em {
+        display: block;
+        font-style: italic;
+        color: var(--accent-blue);
+        letter-spacing: -0.038em;
+        margin-top: 0.04em;
+        text-shadow: 0 0 40px rgba(95, 178, 255, 0.25);
+      }
+
+      .lede {
+        font-size: 18px;
+        line-height: 1.5;
+        color: var(--text-2);
+        max-width: 40ch;
+      }
+      .lede code {
+        font-family: var(--mono);
+        font-size: 0.82em;
+        color: var(--text);
+        background: var(--panel);
+        padding: 0.1em 0.45em;
+        border-radius: 4px;
+        border: 1px solid var(--rule);
+      }
+
+      .url {
+        margin-top: 28px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--mono);
+        font-size: 15px;
+        letter-spacing: 0.02em;
+        color: var(--bg-deep);
+        background: var(--accent-blue);
+        padding: 11px 20px;
+        border-radius: 999px;
+        align-self: flex-start;
+        font-weight: 500;
+        box-shadow: 0 1px 0 rgba(255,255,255,0.22) inset, 0 14px 36px -12px rgba(95,178,255,0.6);
+      }
+
+      /* ─── RIGHT: editor viewer recreation ────────────────── */
+      .viewer-wrap {
+        position: relative;
+        z-index: 4;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .viewer {
+        width: 612px;
+        background: var(--bg);
+        border: 1px solid var(--rule-strong);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.05) inset,
+          0 50px 130px -28px rgba(0, 0, 0, 0.92),
+          0 0 0 1px rgba(95, 178, 255, 0.05);
+        transform: perspective(2600px) rotateY(-9deg) rotateX(2deg) scale(1.02);
+      }
+
+      .viewer__chrome {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--rule);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent);
+      }
+      .dots { display: flex; gap: 6px; }
+      .dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(215,220,232,0.14); }
+      .dots span:nth-child(1) { background: rgba(255, 117, 117, 0.75); }
+      .dots span:nth-child(2) { background: rgba(232, 199, 80, 0.75); }
+      .dots span:nth-child(3) { background: rgba(158, 243, 107, 0.65); }
+      .path {
+        font-family: var(--mono); font-size: 12px; color: var(--muted);
+        text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      }
+      .exif {
+        font-family: var(--mono); font-size: 11px; color: var(--text-mute);
+        letter-spacing: 0.04em; white-space: nowrap;
+      }
+
+      .stage {
+        display: grid;
+        grid-template-columns: 1fr 150px;
+        grid-template-rows: auto 1fr;
+      }
+      .histo {
+        grid-column: 1 / -1;
+        height: 40px;
+        padding: 6px 12px;
+        border-bottom: 1px solid var(--rule);
+        background: rgba(0, 0, 0, 0.28);
+      }
+      .histo svg { width: 100%; height: 100%; }
+
+      .canvas {
+        position: relative;
+        aspect-ratio: 3 / 2;
+        overflow: hidden;
+        background: var(--bg-deep);
+      }
+      .canvas__before, .canvas__after { position: absolute; inset: 0; }
+      .canvas__after { clip-path: polygon(45% 0, 100% 0, 100% 100%, 45% 100%); }
+      .canvas__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+      .handle {
+        position: absolute; top: 0; bottom: 0; left: 45%;
+        width: 2px; background: var(--text); transform: translateX(-1px);
+        z-index: 5; box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+      }
+      .knob {
+        position: absolute; top: 50%; left: 50%;
+        width: 40px; height: 40px; border-radius: 50%;
+        background: var(--text); color: var(--bg-deep);
+        display: flex; align-items: center; justify-content: center;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.1);
+      }
+      .tag {
+        position: absolute; top: 12px;
+        font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+        text-transform: uppercase; color: var(--text);
+        background: rgba(16, 20, 31, 0.62); padding: 4px 9px; border-radius: 3px;
+        z-index: 4;
+      }
+      .tag--left { left: 12px; }
+      .tag--right { right: 12px; background: rgba(95, 178, 255, 0.92); color: var(--bg-deep); }
+
+      .panel {
+        background: var(--panel);
+        border-left: 1px solid var(--rule);
+        padding: 13px 13px;
+        display: flex; flex-direction: column; gap: 15px; font-size: 11px;
+      }
+      .panel__section { display: flex; flex-direction: column; gap: 8px; }
+      .panel__head {
+        display: flex; align-items: center; justify-content: space-between;
+        font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+        text-transform: uppercase; color: var(--muted);
+        padding-bottom: 6px; border-bottom: 1px solid var(--rule);
+      }
+      .panel__eye { color: var(--accent-blue); font-size: 8px; opacity: 0.7; }
+      .slider {
+        display: grid; grid-template-columns: 52px 1fr 38px; align-items: center; gap: 7px;
+        font-family: var(--mono); color: var(--text-2);
+      }
+      .slider__label { color: var(--muted); font-size: 10px; }
+      .slider__track { position: relative; height: 2px; background: var(--rule-strong); border-radius: 2px; }
+      .slider__track::before {
+        content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: var(--v);
+        background: linear-gradient(90deg, rgba(95, 178, 255, 0.45), var(--accent-blue)); border-radius: 2px;
+      }
+      .slider__knob {
+        position: absolute; top: 50%; left: var(--v); width: 11px; height: 11px; border-radius: 50%;
+        background: var(--text); transform: translate(-50%, -50%);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3), 0 0 6px rgba(95, 178, 255, 0.45);
+      }
+      .slider__value { font-size: 10px; text-align: right; color: var(--text); }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="scan"></div>
+
+      <!-- LEFT -->
+      <div class="left">
+        <div class="brand">
+          <span class="brand__mark">
+            <svg viewBox="0 0 24 24" width="28" height="28">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.2" />
+              <circle cx="12" cy="12" r="4.2" fill="currentColor" />
+              <circle cx="12" cy="12" r="1.4" fill="#10141f" />
+            </svg>
+          </span>
+          <span class="brand__name">Open<em>Raw Editor</em></span>
+          <span class="brand__tag">v0.9</span>
+        </div>
+
+        <p class="eyebrow"><span class="eyebrow__dot"></span>open source · no account · no ads</p>
+
+        <h1>Develop a RAW,<em>in your browser.</em></h1>
+
+        <p class="lede">
+          Drop a <code>.ARW</code>, <code>.CR3</code>, or <code>.NEF</code> on any device.
+          Push the edits, export a 16-bit TIFF. Every byte stays with you.
+        </p>
+
+        <span class="url">raweditor.io&nbsp;&nbsp;→</span>
+      </div>
+
+      <!-- RIGHT: editor preview -->
+      <div class="viewer-wrap">
+        <figure class="viewer">
+          <div class="viewer__chrome">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="path">~/photos/2026-06-13/DSC06136.ARW</span>
+            <span class="exif">ƒ/2.8 · 1/640s · ISO&nbsp;200 · 35mm</span>
+          </div>
+
+          <div class="stage">
+            <div class="histo">
+              <svg viewBox="0 0 200 40" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="hg" x1="0" x2="1">
+                    <stop offset="0" stop-color="#ff7575" stop-opacity=".75" />
+                    <stop offset=".5" stop-color="#9ef36b" stop-opacity=".6" />
+                    <stop offset="1" stop-color="#5fb2ff" stop-opacity=".8" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M0,40 L0,32 L8,28 L14,18 L20,12 L28,8 L36,10 L44,18 L52,24 L60,20 L68,14 L78,16 L86,22 L96,18 L106,10 L116,6 L126,8 L138,14 L148,20 L158,24 L168,26 L178,22 L188,28 L196,34 L200,40 Z"
+                  fill="url(#hg)"
+                />
+              </svg>
+            </div>
+
+            <div class="canvas">
+              <div class="canvas__before">
+                <img class="canvas__photo" src="../assets/DSC06136-before-preview.webp" alt="" />
+              </div>
+              <div class="canvas__after">
+                <img class="canvas__photo" src="../assets/DSC06136-after-preview.webp" alt="" />
+              </div>
+              <div class="handle"><span class="knob">
+                <svg viewBox="0 0 24 24" width="15" height="15">
+                  <path d="M9 6l-5 6 5 6M15 6l5 6-5 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+              </span></div>
+              <span class="tag tag--left">before</span>
+              <span class="tag tag--right">after</span>
+            </div>
+
+            <aside class="panel">
+              <div class="panel__section">
+                <header class="panel__head"><span>White balance</span><span class="panel__eye">◉</span></header>
+                <div class="slider" style="--v: 62%"><span class="slider__label">temp</span><span class="slider__track"><span class="slider__knob"></span></span><span class="slider__value">+540</span></div>
+                <div class="slider" style="--v: 48%"><span class="slider__label">tint</span><span class="slider__track"><span class="slider__knob"></span></span><span class="slider__value">−4</span></div>
+              </div>
+              <div class="panel__section">
+                <header class="panel__head"><span>Tone</span><span class="panel__eye">◉</span></header>
+                <div class="slider" style="--v: 58%"><span class="slider__label">exposure</span><span class="slider__track"><span class="slider__knob"></span></span><span class="slider__value">+0.35</span></div>
+                <div class="slider" style="--v: 70%"><span class="slider__label">contrast</span><span class="slider__track"><span class="slider__knob"></span></span><span class="slider__value">+18</span></div>
+                <div class="slider" style="--v: 28%"><span class="slider__label">highlights</span><span class="slider__track"><span class="slider__knob"></span></span><span class="slider__value">−42</span></div>
+                <div class="slider" style="--v: 72%"><span class="slider__label">shadows</span><span class="slider__track"><span class="slider__knob"></span></span><span class="slider__value">+28</span></div>
+              </div>
+              <div class="panel__section">
+                <header class="panel__head"><span>Color</span><span class="panel__eye">◉</span></header>
+                <div class="slider" style="--v: 64%"><span class="slider__label">vibrance</span><span class="slider__track"><span class="slider__knob"></span></span><span class="slider__value">+22</span></div>
+              </div>
+            </aside>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </body>
+</html>
