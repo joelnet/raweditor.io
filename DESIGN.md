@@ -1,5 +1,5 @@
 ---
-name: Open Raw Edit
+name: Open Raw Editor
 description: A photographer's console in your browser, marketing site visual system.
 colors:
   bg-deep: "#10141f"
@@ -111,7 +111,7 @@ components:
     padding: "36px 30px 40px"
 ---
 
-# Design System: Open Raw Edit
+# Design System: Open Raw Editor
 
 ## 1. Overview
 
@@ -165,7 +165,7 @@ accents (red, green, yellow) reserved for the chart strip.
 - **Signal Blue** (`#5fb2ff`): The single accent that carries the entire
   identity. Used for CTAs, italic-serif emphasis ("in your browser.",
   "shouldn't outlive the photo."), section eyebrows (`01 / what it
-  does`), the comparison table's `yes` cells, the wordmark's "Raw Edit"
+  does`), the comparison table's `yes` cells, the wordmark's "Raw Editor"
   italic, and the pulsing eyebrow dot. Identical to the editor's
   `--accent-blue`. Never used for body text; never used for full-bleed
   surface fills. Its rarity is the point.
@@ -379,7 +379,7 @@ is prohibited. If a card glows but does nothing, the system is lying.
 
 - **Style:** Borderless cells with hairline row dividers, mono 12px
   values, mono uppercase 10px row labels.
-- **Highlight column:** The "Open Raw Edit" column carries a faint
+- **Highlight column:** The "Open Raw Editor" column carries a faint
   `rgba(95,178,255,0.05)` tint and column-header text in Signal Blue.
   The `yes` and brand `none` cells are themselves Signal Blue.
 - **Header:** `nowrap` so the brand name never wraps across three
@@ -404,7 +404,7 @@ is prohibited. If a card glows but does nothing, the system is lying.
 
 - **Style:** Sticky top, `rgba(16,20,31,0.72)` background with a 14px
   blur, hairline bottom border. Brand wordmark on the left (mono "Open"
-  + italic-serif "Raw Edit" in Signal Blue), four mono uppercase links
+  + italic-serif "Raw Editor" in Signal Blue), four mono uppercase links
   on the right with the Nav CTA at the end.
 - **Mobile:** Inline links collapse below 720px, leaving only the brand
   and the Nav CTA.

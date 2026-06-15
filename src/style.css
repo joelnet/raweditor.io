@@ -1,5 +1,5 @@
 /* ──────────────────────────────────────────────────────────────────────────
-   Open Raw Edit · marketing site
+   Open Raw Editor · marketing site
    Aesthetic: blue hour. Cool deep navy from the editor app, Signal Blue
    accent (#5fb2ff) borrowed exactly from raw-editor/src/styles.css,
    editorial serif italics against a precise grotesque, a fine grain
@@ -1186,6 +1186,16 @@ code {
 
 .foot__row--lines a:hover {
   color: var(--safelight);
+}
+
+.foot__social {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+}
+
+.foot__social svg {
+  display: block;
 }
 
 /* ─── REDUCE MOTION ─────────────────────────────────────────────────────── */

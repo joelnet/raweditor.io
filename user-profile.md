@@ -1,4 +1,4 @@
-# Target User Profile, Open Raw Edit
+# Target User Profile, Open Raw Editor
 
 ## The project, in one line
 

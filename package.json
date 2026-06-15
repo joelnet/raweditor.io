@@ -1,7 +1,8 @@
 {
-  "name": "open-raw-edit-web",
+  "name": "open-raw-editor-web",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
