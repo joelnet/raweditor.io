@@ -1,0 +1,9 @@
+temp: +5
+exposure: +0.15
+highlights: -10
+shadows: +48
+blacks: +1
+dehaze: +100
+vibrance: +40
+highlights-hue: 221
+highlights-sat: 27
