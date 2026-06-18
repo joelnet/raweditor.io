@@ -170,13 +170,6 @@ code {
   vertical-align: baseline;
 }
 
-.nav__tag {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--paper-dim);
-  letter-spacing: 0.04em;
-}
-
 .nav__links {
   display: flex;
   align-items: center;
@@ -213,9 +206,6 @@ code {
 
 @media (max-width: 720px) {
   .nav__links a:not(.nav__cta) {
-    display: none;
-  }
-  .nav__tag {
     display: none;
   }
 }
